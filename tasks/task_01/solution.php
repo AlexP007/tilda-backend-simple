@@ -13,13 +13,9 @@ class TriangleNumLinesIterator implements IteratorAggregate
 
     public function getIterator(): Traversable
     {
-        $i = 1;
-        $n = 0;
-
-        while ($i <= $this->maxPosition) {
+        for ($n = 0, $i = 1; $i <= $this->maxPosition; $i++) {
             $n += $i;
             yield $this->line($i, $n - $i + 1, $n);         
-            $i++;
         }
 
         if ($this->strict && $n < $this->max) {
